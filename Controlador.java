@@ -77,7 +77,22 @@ public class Controlador {
                     }
                     break;
                 case 6:
-                    // COMPLETAR
+                //Media hora de mi vida para comprender como por qué no posía usar == y era equals
+                    System.out.println("MONSTRUO");
+                    for (Map.Entry<String, String> entry : cartas.entrySet())
+                        if (entry.getValue().equals("Monstruo")){
+                        System.out.println("Nombre: " + entry.getKey() + ", Tipo: " + entry.getValue());
+                     }
+                    System.out.println("TRAMPS");
+                    for (Map.Entry<String, String> entry : cartas.entrySet())
+                        if (entry.getValue().equals("Trampa")){
+                        System.out.println("Nombre: " + entry.getKey() + ", Tipo: " + entry.getValue());
+                    }
+                    System.out.println("HECHIZO");
+                    for (Map.Entry<String, String> entry : cartas.entrySet())
+                        if (entry.getValue().equals("Hechizo")){
+                        System.out.println("Nombre: " + entry.getKey() + ", Tipo: " + entry.getValue());
+                    }
                     break;
                 case 7:
                     System.out.println("Gracias por usar cartas");
