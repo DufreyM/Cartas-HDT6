@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Controlador {
     Scanner scanner = new Scanner(System.in);
-    Map<String, String> coleccionUsuario = new HashMap<>();
+    Map<String, Integer> coleccionUsuario = new HashMap<>();
 
     public void ejecutar(){
     
@@ -51,13 +51,16 @@ public class Controlador {
                     String nombreCarta = scanner.nextLine();
         
                     if (cartas.containsKey(nombreCarta)) {
-                        String contadorUsuarioString = String.valueOf(contadorUsuario);
-                        coleccionUsuario.put(nombreCarta, contadorUsuarioString);
+                        if (coleccionUsuario.containsKey(nombreCarta)==(cartas.containsKey(nombreCarta))){
+                            contadorUsuario = contadorUsuario + 1; 
+                        }
+                        coleccionUsuario.put(nombreCarta, contadorUsuario);
                         System.out.println("Carta agregada correctamente.");
                     } else {
                         System.out.println("La carta no se encuentra disponible.");
                     }
                     break;
+                    
                 case 2:
                     System.out.println("Ingrese el nombre de la carta:");
                     String carta = scanner.nextLine();
@@ -68,39 +71,58 @@ public class Controlador {
                         System.out.println("La carta no se encuentra en la colección.");
                     }
                     break;
+
                 case 3:
-                
-                for  (Map.Entry<String, String> entry : coleccionUsuario.entrySet()) {
+                for  (Map.Entry<String, Integer> entry : coleccionUsuario.entrySet()) {
                         System.out.println("Nombre: " + entry.getKey() + ", Cantidad: " + entry.getValue());
                     }
                     break;
                  
                 case 4:
-                    //COMPLETAR
+                for (Map.Entry<String, Integer> entrada : coleccionUsuario.entrySet()){
+                    for (Map.Entry<String, String> entry : cartas.entrySet()){
+                         if (entrada.getKey().equalsIgnoreCase(entry.getKey())){
+                            if (entry.getValue().equalsIgnoreCase("Monstruo")){
+                            System.out.println("Tipo: " + entry.getValue() + " Nombre: " + entrada.getKey() + ", Cantidad: " + entrada.getValue());
+                            }
+
+                            if (entry.getValue().equalsIgnoreCase("Trampa")){
+                            System.out.println("Tipo: " + entry.getValue() + " Nombre: " + entrada.getKey() + ", Cantidad: " + entrada.getValue());
+                            }
+
+                            if (entry.getValue().equalsIgnoreCase("Hechizo")){
+                            System.out.println("Tipo: " + entry.getValue() + " Nombre: " + entrada.getKey() + ", Cantidad: " + entrada.getValue());
+                            }
+                        }
+                    }
+                }
                     break;
+
                 case 5:
                     for (Map.Entry<String, String> entry : cartas.entrySet()) {
                         System.out.println("Nombre: " + entry.getKey() + ", Tipo: " + entry.getValue());
                     }
                     break;
+
                 case 6:
                 //Media hora de mi vida para comprender como por qué no posía usar == y era equals
                     System.out.println("MONSTRUO");
                     for (Map.Entry<String, String> entry : cartas.entrySet())
-                        if (entry.getValue().equals("Monstruo")){
+                        if (entry.getValue().equalsIgnoreCase("Monstruo")){
                         System.out.println("Nombre: " + entry.getKey() + ", Tipo: " + entry.getValue());
                      }
-                    System.out.println("TRAMPS");
+                    System.out.println("TRAMPA");
                     for (Map.Entry<String, String> entry : cartas.entrySet())
-                        if (entry.getValue().equals("Trampa")){
+                        if (entry.getValue().equalsIgnoreCase("Trampa")){
                         System.out.println("Nombre: " + entry.getKey() + ", Tipo: " + entry.getValue());
                     }
                     System.out.println("HECHIZO");
                     for (Map.Entry<String, String> entry : cartas.entrySet())
-                        if (entry.getValue().equals("Hechizo")){
+                        if (entry.getValue().equalsIgnoreCase("Hechizo")){
                         System.out.println("Nombre: " + entry.getKey() + ", Tipo: " + entry.getValue());
                     }
                     break;
+
                 case 7:
                     System.out.println("Gracias por usar cartas");
                     System.exit(0);
