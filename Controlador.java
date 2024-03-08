@@ -1,9 +1,11 @@
 import java.util.Map;
 import java.util.Scanner;
+import java.util.HashMap;
 
 public class Controlador {
     Scanner scanner = new Scanner(System.in);
-     
+    Map<String, String> coleccionUsuario = new HashMap<>();
+
     public void ejecutar(){
     
         System.out.println("Seleccione la implementación de Map que desea usar:");
@@ -12,6 +14,7 @@ public class Controlador {
         System.out.println("3. LinkedHashMap");
         int opcion = scanner.nextInt();
         InterfaceMap collection = null;
+
         switch (opcion) {
             case 1:
                 collection = new HashMapF();
@@ -41,15 +44,15 @@ public class Controlador {
             System.out.println("7. Salir");
             int choice = scanner.nextInt();
             scanner.nextLine();
-
+            int contadorUsuario = 1; 
             switch (choice) {
                 case 1:
                     System.out.println("Ingrese el nombre de la carta que desea agregar:");
                     String nombreCarta = scanner.nextLine();
+        
                     if (cartas.containsKey(nombreCarta)) {
-                        
-                        //COMPLETAR
-
+                        String contadorUsuarioString = String.valueOf(contadorUsuario);
+                        coleccionUsuario.put(nombreCarta, contadorUsuarioString);
                         System.out.println("Carta agregada correctamente.");
                     } else {
                         System.out.println("La carta no se encuentra disponible.");
@@ -66,8 +69,12 @@ public class Controlador {
                     }
                     break;
                 case 3:
-                    //COMPLETAR
+                
+                for  (Map.Entry<String, String> entry : coleccionUsuario.entrySet()) {
+                        System.out.println("Nombre: " + entry.getKey() + ", Cantidad: " + entry.getValue());
+                    }
                     break;
+                 
                 case 4:
                     //COMPLETAR
                     break;

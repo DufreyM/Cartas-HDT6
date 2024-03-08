@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.util.Map;
 
 public class Lector {
-    private static final String FILE_PATH = "cards_desc.txt"; 
+    private static final String PATH = "cards_desc.txt"; 
 
     public static Map<String, String> leerCartas(InterfaceMap factory) {
         Map<String, String> cartas = factory.createMap();
 
-        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(PATH))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split("\\|");
